@@ -10,7 +10,6 @@ var githook = new Githook({
 
 // bind a route to githook, eg. express 4.0
 app.post('/gitlab', function (req, res) {
-  debug('gitlab event');
   gh.handleEvent('gitlab', {
     ip: githook.determineIP(req),
     headers: req.headers,
