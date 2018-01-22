@@ -1,3 +1,6 @@
+const app = require("express")();
+const Githook = require("git-hook");
+
 var githook = new Githook({
   gitlab: {
     secret: 'abcdefg',
@@ -26,3 +29,10 @@ githook.on('push', function (eventdata) {
   // do your magic here
   console.log("push :", eventdata);
 });
+
+const port = process.env.PORT || '3010';
+app.set('port', port);
+var http = require('http');
+const server = http.createServer(app);
+server.listen(port);
+
