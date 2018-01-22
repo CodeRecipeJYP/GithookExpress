@@ -1,5 +1,11 @@
 const app = require("express")();
 const Githook = require("git-hook");
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json({
+  limit: '1mb'
+}));
+
 
 var githook = new Githook({
   gitlab: {
